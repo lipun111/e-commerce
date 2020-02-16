@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} checkout page {% endblock %}
+
+      {% block content %}
+          {% if not billing_profile %}
+          <div class="raw" align='center'>
+            <div class="col-12 col-md-6" align='left'>
+            {% include 'user/snippets/login_form.html' with form=login_form next_url=request.build_absolute_uri %}
+            </div>
+            <div class="col-12 col-md-6" align='left'>
+            <legend align='center'>Login As Guest</legend>{% url 'guest_register' as guest_register_url %}
+            {% include 'user/snippets/login_form.html' with form=guest_form next_url=request.build_absolute_uri action_url=guest_register_url %}
+            </div>
+          </div>
+          {% else %}
+              <h1>Checkout</h1>
+              <h5>Cart Total: {{ object.cart.total }}</h5>
+              <h5>Shipping Total: {{ object.shipping_total }}</h5>
+              <h5>Order Total: {{ object.total }}</h5>
+          {% endif %}
+      {% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}Log In{% endblock %}
+
+  {% block content %}
+  <div style="margin-top: 80px; width:900px;">
+    {% include 'user/snippets/login_form.html' %}
+    <p>Don't Have account <a href="{% url 'register' %}" class="btn btn-link">Shign up here</a></p>
+  </div>
+  {% endblock %}
